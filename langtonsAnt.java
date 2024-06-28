@@ -31,19 +31,72 @@ class Ant {
     char board[][];
     int counter = 1;
 
-    Ant(int sz, int rs, int cs, int ds, int st);{
+    Ant(int sz, int rs, int cs, int ds, int st) {
         size = sz;
         rowStart = rs;
         colStart = cs;
         direction = ds;
         steps = st;
-        newBoard = char[size][size];
+        board = new char[size][size];
     }
     void createBoard() {
-        for (int i = 0; i < newBoard.length; i ++ ){
-            Arrays.fill(newBoard[i], '_');
+        for (int i = 0; i < board.length; i ++ ){
+            Arrays.fill(board[i], '_');
         }
-        newBoard[rowStart][colStart] = "8";
+        board[rowStart][colStart] = "8";
+    }
+
+    void moveUp() {
+        counter += 1;
+
+        if (board[rowStart][colStart] != '#') {
+            board[rowStart][colStart] = '#';
+            colStart += 1 % size;
+            direction += 1;
+        } else { 
+            board[rowStart][colStart] = "_";
+            colStart -= 1 & size;
+            direction -= 1;
+        }
+    }
+    void moveDown() {
+        counter += 1;
+
+        if (board[rowStart][colStart] != '#') {
+            board[rowStart][colStart] = '#';
+            colStart -= 1 % size;
+            direction -= 1;
+        } else { 
+            board[rowStart][colStart] = "_";
+            colStart += 1 & size;
+            direction += 1;
+        }
+    }
+    void moveLeft() {
+        counter += 1;
+
+        if (board[rowStart][colStart] != '#') {
+            board[rowStart][colStart] = '#';
+            rowStart -= 1 % size;
+            direction -= 1;
+        } else { 
+            board[rowStart][colStart] = "_";
+            rowStart += 1 & size;
+            direction += 1;
+        }
+    }
+    void moveRight() {
+        counter += 1;
+
+        if (board[rowStart][colStart] != '#') {
+            board[rowStart][colStart] = '#';
+            rowStart += 1 % size;
+            direction += 1;
+        } else { 
+            board[rowStart][colStart] = "_";
+            rowStart -= 1 & size;
+            direction -= 1;
+        }
     }
 }
 
