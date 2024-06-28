@@ -22,10 +22,28 @@ public class LangtonsAnt {
         if (size < 5| size > 100 | rowStart < 0 | rowStart > size | colStart < 0 | colStart > size | direction < 0 | direction > 4 ) {
             System.out.println("Incorrect input. Please restart and try again.");
             return; 
-        }
-            
+        }           
     }
-    
+}
 
+class Ant {
+    int size, rowStart, colStart, direction, steps;
+    char board[][];
+    int counter = 1;
+
+    Ant(int sz, int rs, int cs, int ds, int st);{
+        size = sz;
+        rowStart = rs;
+        colStart = cs;
+        direction = ds;
+        steps = st;
+        newBoard = char[size][size];
+    }
+    void createBoard() {
+        for (int i = 0; i < newBoard.length; i ++ ){
+            Arrays.fill(newBoard[i], '_');
+        }
+        newBoard[rowStart][colStart] = "8";
+    }
 }
 
