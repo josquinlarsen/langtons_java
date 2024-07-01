@@ -27,7 +27,6 @@ public class LangtonsAnt {
     }
 }
 
-
 class Ant {
     int size, row, col, direction, steps;
     char board[][];
@@ -43,7 +42,7 @@ class Ant {
     }
 
     void createBoard() {
-        for (int i = 0; i < size; i++){
+        for (int i = 0; i < board.length; i++){
             Arrays.fill(board[i], '_');
         }
             board[row][col] = '8';
@@ -56,21 +55,22 @@ class Ant {
             col = col % size;
         } else if (row < 0) {
             row = row + size;
-        } else if (col < 0);
+        } else if (col < 0) {
             col = col + size;
+        }
     }
 
     void moveUp() {
         counter += 1;
         if (board[row][col] != '#') {
             board[row][col] = '#';
-            col += 1;
             direction += 1;
+            col += 1;
             this.wrapBoard();
         } else { 
             board[row][col] = '_';
-            col -= 1;
             direction -= 1;
+            col -= 1;
             this.wrapBoard();
         }
     }
@@ -78,13 +78,13 @@ class Ant {
         counter += 1;
         if (board[row][col] != '#') {
             board[row][col] = '#';
-            col -= 1;
             direction += 1;
+            col -= 1;
             this.wrapBoard();
         } else { 
             board[row][col] = '_';
-            col += 1;
             direction -= 1;
+            col += 1;
             this.wrapBoard();
         }
     }
@@ -92,30 +92,32 @@ class Ant {
         counter += 1;
         if (board[row][col] != '#') {
             board[row][col] = '#';
-            row -= 1;
             direction += 1;
+            row -= 1;
             this.wrapBoard();
         } else { 
             board[row][col] = '_';
-            row += 1;
             direction -= 1;
+            row += 1;
             this.wrapBoard();
         }
     }
+
     void moveRight() {
         counter += 1;
         if (board[row][col] != '#') {
             board[row][col] = '#';
-            row += 1;
             direction += 1;
+            row += 1;
             this.wrapBoard();
         } else { 
             board[row][col] = '_';
-            row -= 1;
             direction -= 1;
+            row -= 1;
             this.wrapBoard();
         }
     }
+
     void printBoard() {
         for (int i = 0; i < size; i++) {
             String row = Arrays.toString(board[i]).replace(", ", " ");
@@ -127,8 +129,8 @@ class Ant {
         this.createBoard();
         while (counter < steps) {
             if (steps == 0) {
-            this.printBoard();
-            return;
+                this.printBoard();
+                return;
             } else if (direction % 2 == 0 && direction % 4 == 0) {
                 this.moveUp(); 
             } else if (direction % 2 == 0 && direction % 4 == 2) {
@@ -141,7 +143,6 @@ class Ant {
         } 
         board[row][col] = '8';
         this.printBoard();
-
     }
 }
 
