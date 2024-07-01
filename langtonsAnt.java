@@ -120,7 +120,7 @@ class Ant {
 
     void printBoard() {
         for (int i = 0; i < size; i++) {
-            String row = Arrays.toString(board[i]).replace(", ", " ");
+            String row = Arrays.toString(board[i]).replace("[", "").replace("]", "").replace(", ", " ");
             System.out.println(row);
         }
     }
